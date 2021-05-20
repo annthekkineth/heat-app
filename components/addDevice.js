@@ -1,23 +1,24 @@
 import React from 'react';
 import { View, StyleSheet, Text, TextInput, TouchableOpacity, Image } from 'react-native';
+import EStyleSheet from 'react-native-extended-stylesheet';
 
 export default function machineDetails(props) {
 
     const { navigation } = props;
 
     return (
-        <View>
+        <View style={styles.container}>
            <Text style={styles.homeHead}> Add Device </Text>
             <View style={styles.flexBox}>
                 <View style={styles.homeBox}>
                     
                 </View>
                 
-                <View style={styles.setTemp}>
-                <Image style={styles.thermoImage} source={require('../icons/qrcode.png')}/>
-                    <Text style={styles.textTemp}>Type QR Code</Text>
+                <View style={styles.typeCode}>
+                <Image style={styles.qrImage} source={require('../icons/qrcode.png')}/>
+                    <Text style={styles.textQR}>Type QR Code</Text>
                 </View>
-                <View style={styles.notificationBox} >
+                <View style={styles.buttonView} >
                     <Text style={styles.scanButton}>Scan </Text>
                 </View>
             </View>
@@ -25,26 +26,24 @@ export default function machineDetails(props) {
     )
 }
 
-const styles = StyleSheet.create({
+const styles = EStyleSheet.create({
+    container: {
+        justifyContent: 'center', alignItems: 'center',
+      },
     homeHead: {
         height: 30,
-        width: 225,
-        left: 120,
-        top: 30,
-        position: "absolute",
+        width: '40%',
+        marginTop:'2 rem',
+        marginBottom:'1 rem',
         fontSize: 20,
         fontWeight: '700',
 
     },
   
     flexBox: {
-        //display: 'flex',
         flex: 1,
         flexDirection: 'row',
         flexWrap: 'wrap',
-        // alignItems: 'center',
-        top: 90,
-        // justifyContent: 'center',
         
     },
     homeBox: {
@@ -53,42 +52,40 @@ const styles = StyleSheet.create({
         left: 20,
         borderRadius: 20,
         backgroundColor: '#000',
-        // alignSelf: "flex-start",
+        marginBottom:'1 rem',
     },
-    notificationBox: {
+    buttonView: {
         height: 70,
-        width: 286,
-        left: 70,
         borderRadius: 10,
         backgroundColor: '#F2C94C',
-        top: 530,
-        position:'absolute',
+        width: '90%',
+        left: 20,
         alignItems: 'center'
     },
-    setTemp:{
-        position: 'absolute',
-        top:420,
-        left: 70,
+    typeCode:{
+        // position: 'absolute',
+        // top:420,
+        width: '90%',
+        left: 20,
+        marginBottom:'1 rem',
         borderRadius: 10,
         height: 70,
-        width:286,
         backgroundColor: "#FFF"
     },
-    thermoImage:{
-        // position: 'absolute',
-        top: 20,
-        left: 250,
+    qrImage:{
         width: 20,
         height: 20,
+        marginTop: '1 rem',
+        marginLeft:'19rem'
     },
-    textTemp:{
-        left: 20,
-        top: 3,
+    textQR:{
         fontWeight: '500',
+        marginTop: '-1 rem',
+        marginLeft:'1 rem'
     },   
     scanButton:{
-        top: 20,
         fontSize: 16,
         fontWeight: '500',
+        marginTop: '1 rem',
     }
 })

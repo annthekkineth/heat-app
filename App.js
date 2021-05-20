@@ -1,9 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import EStyleSheet from 'react-native-extended-stylesheet';
+const { width, height } = Dimensions.get('window');
 
+const entireScreenHeight = Dimensions.get('window').height;
+const entireScreenWidth = Dimensions.get('window').width;
+EStyleSheet.build({
+    $rem: (entireScreenHeight * entireScreenWidth) / 19125,
+});
 
 const Stack = createStackNavigator();
 // const Drawer = createDrawerNavigator();
@@ -13,6 +20,7 @@ import signUp from './components/signUp';
 import homepage from './components/homepage';
 import machineDetails from './components/machineDetails';
 import addDevice from './components/addDevice';
+
 
 export default function App() {
   return (

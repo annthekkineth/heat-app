@@ -1,133 +1,238 @@
 import React from 'react';
-import { View, StyleSheet, Text, TextInput, TouchableOpacity, Image } from 'react-native';
+import { View, StyleSheet, Text, TextInput, TouchableOpacity, Image, ScrollView, SafeAreaView, StatusBar, Dimensions } from 'react-native';
+import {
+    LineChart,
+} from "react-native-chart-kit";
+import EStyleSheet from 'react-native-extended-stylesheet';
 
-export default function machineDetails(props) {
+
+export default function machine(props) {
 
     const { navigation } = props;
 
     return (
-        <View>
-           
-            <View style={styles.flexBox}>
+        <View style={{ flex: 1 }}>
+            <ScrollView contentContainerStyle={{ flexGrow: 1, marginTop: 20 }}>
+
                 <View style={styles.homeBox}>
                     <Text style={styles.box1Text}>Day</Text>
-                    <TextInput style={styles.input}/>
+                    <TextInput style={styles.input} />
                     <Text style={styles.box1Text}>Period</Text>
-                    <TextInput style={styles.inputPeriod}/>
-                    <Image style={styles.refreshImage} source={require('../icons/rotateleft.png')}/>
+                    <TextInput style={styles.inputPeriod} />
+                    <Image style={styles.refreshImage} source={require('../icons/rotateleft.png')} />
                 </View>
+
                 <View style={styles.notificationBox} >
                     <Text style={styles.notificationHead}>Notification </Text>
                 </View>
-                <View style={styles.setTemp}>
-                <Image style={styles.thermoImage} source={require('../icons/thermometer.png')}/>
-                    <Text style={styles.textTemp}>Set Temparature</Text>
+
+                <View style={styles.box3}>
+                    <View style={styles.setTemp}>
+                        <Image style={styles.thermoImage} source={require('../icons/thermometer.png')} />
+                        <Text style={styles.textTemp}>Set Temparature</Text>
+                    </View>
+                    <View style={styles.setHumidity}>
+                        <Image style={styles.thermoImage} source={require('../icons/water-drop.png')} />
+                        <Text style={styles.textTemp}>Set Humidity</Text>
+                    </View>
                 </View>
-                <View style={styles.setHumidity}>
-                <Image style={styles.thermoImage} source={require('../icons/water-drop.png')}/>
-                    <Text style={styles.textTemp}>Set Humidity</Text>
+
+                <View style={styles.graph1}>
+                    <Text style={styles.graphHead}> Temperature graph </Text>
+                    <LineChart
+                        data={{
+                            labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6"],
+                            datasets: [
+                                {
+                                    data: [
+                                        Math.random() * 100,
+                                        Math.random() * 100,
+                                        Math.random() * 100,
+                                        Math.random() * 100,
+                                        Math.random() * 100,
+                                        Math.random() * 100
+                                    ]
+                                }
+                            ]
+                        }}
+                        width={Dimensions.get("window").width - 50} // from react-native
+                        height={220}
+
+                        yAxisInterval={1} // optional, defaults to 1
+                        chartConfig={{
+                            backgroundColor: "#f5e571",
+                            backgroundGradientFrom: "#f5e571",
+                            backgroundGradientTo: "#d1c35a",
+                            // decimalPlaces: 2, // optional, defaults to 2dp
+                            color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+                            labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+                            style: {
+                                borderRadius: 16
+                            },
+                            propsForDots: {
+                                r: "6",
+                                strokeWidth: "2",
+
+                                // stroke: "#000"
+                            }
+                        }}
+                        bezier
+                        style={{
+                            marginVertical: 8,
+                            borderRadius: 16,
+                        }}
+                    />
                 </View>
-            </View>
+
+                <View style={styles.graph1}>
+                    <Text style={styles.graphHead}>Humidity Graph</Text>
+                    <LineChart
+                        data={{
+                            labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6"],
+                            datasets: [
+                                {
+                                    data: [
+                                        Math.random() * 100,
+                                        Math.random() * 100,
+                                        Math.random() * 100,
+                                        Math.random() * 100,
+                                        Math.random() * 100,
+                                        Math.random() * 100
+                                    ]
+                                }
+                            ]
+                        }}
+                        width={Dimensions.get("window").width - 50} // from react-native
+                        height={220}
+
+                        yAxisInterval={1} // optional, defaults to 1
+                        chartConfig={{
+                            backgroundColor: "#f5e571",
+                            backgroundGradientFrom: "#f5e571",
+                            backgroundGradientTo: "#d1c35a",
+                            // decimalPlaces: 2, // optional, defaults to 2dp
+                            color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+                            labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+                            style: {
+                                borderRadius: 16,
+                            },
+                            propsForDots: {
+                                r: "6",
+                                strokeWidth: "2",
+
+                                // stroke: "#000"
+                            }
+                        }}
+                        bezier
+                        style={{
+                            marginVertical: 8,
+                            borderRadius: 16,
+                        }}
+                    />
+                </View>
+
+            </ScrollView>
         </View>
+
     )
 }
 
-const styles = StyleSheet.create({
-  
-    flexBox: {
-        //display: 'flex',
-        flex: 1,
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        // alignItems: 'center',
-        top: 74,
-        // justifyContent: 'center',
-        
-    },
+
+
+const styles = EStyleSheet.create({
+
     homeBox: {
-        height: 180,
+        height: '11rem',
         width: '90%',
-        left: 20,
-        borderRadius: 20,
+        left: '1.25rem',
+        borderRadius: '1.25rem',
         backgroundColor: '#E9E9E9',
-        // alignSelf: "flex-start",
-    },
-    notificationBox: {
-        height: 180,
-        width: '90%',
-        left: 20,
-        borderRadius: 20,
-        backgroundColor: '#F2C94C',
-        top: 200,
-        position:'absolute',
-    },
-    setTemp:{
-        position: 'absolute',
-        top:400,
-        left: 20,
-        borderRadius: 20,
-        height: 70,
-        width:180,
-        backgroundColor: "#FFF"
-    },
-    thermoImage:{
-        // position: 'absolute',
-        top: 20,
-        left: 10,
-        width: 20.02,
-        height: 20,
-    },
-    textTemp:{
-        left: 40,
-        top: 3,
-    },
-    setHumidity:{
-        position: 'absolute',
-        top:400,
-        left: 250,
-        borderRadius: 20,
-        height: 70,
-        width:180,
-        backgroundColor: "#FFF"
+        marginBottom: '1.25 rem'
     },
     box1Text: {
-        height: 50,
-        width: 90,
-        left: 35,
-        top: 60,
+        height: '3.125rem',
+        width: '5.125rem',
+        marginLeft: '1.25rem',
+        top: '1.25rem',
         fontSize: 17,
         fontWeight: '500',
     },
     input: {
-        width: 183,
-        left: 150,
-        height: 55,
-        top: 30,
+        width: '9.125rem',
+        marginLeft: '8rem',
+        height: '2.75rem',
+        top: '-2.25rem',
         backgroundColor: '#fff',
         borderRadius: 10,
-        paddingHorizontal: 10,
-        position: 'absolute',
     },
     inputPeriod: {
-        width: 183,
-        left: 150,
-        height: 55,
-        top: 100,
+        width: '9.125rem',
+        marginLeft: '8rem',
+        height: '2.75rem',
+        top: '-3.25rem',
         backgroundColor: '#fff',
         borderRadius: 10,
-        paddingHorizontal: 10,
-        position: 'absolute',
+
     },
     refreshImage: {
-        position: 'absolute',
-        top: 120,
-        left: 350,
-        width: 20,
-        height:20,
+        marginLeft: '18rem',
+        top: '-5rem',
+        width: '1.75rem',
+        height: '1.75rem'
     },
-    notificationHead:{
-        left: 24,
-        top: 10,
+    notificationBox: {
+        height: '11rem',
+        width: '90%',
+        left: '1.25rem',
+        borderRadius: '1.25rem',
+        backgroundColor: '#F2C94C',
+        marginBottom: '1.25 rem'
+    },
+    notificationHead: {
+        marginLeft: '1.75 rem',
+        marginTop: '0.75 rem',
         fontSize: 16,
+    },
+    box3: {
+        flex: 1,
+        flexDirection: 'row',
+        left: '1.25rem',
+        marginBottom: '1.25 rem'
+    },
+    setTemp: {
+        borderRadius: 20,
+        height: 70,
+        width: '40%',
+        backgroundColor: "#FFF"
+    },
+    thermoImage: {
+        width: '1.2 rem',
+        height: '1.2 rem',
+        marginLeft: '0.5 rem',
+        top: '1.25 rem',
+    },
+    textTemp: {
+        marginLeft: '2.25 rem',
+    },
+    setHumidity: {
+        left: '1.25rem',
+        borderRadius: 20,
+        height: 70,
+        width: '40%',
+        backgroundColor: "#FFF"
+    },
+    graph1: {
+        justifyContent: 'center', alignItems: 'center',
+        backgroundColor: "#fff",
+        borderRadius: 20,
+        width: '90%',
+        left: '1.25rem',
+        height: 270,
+        marginBottom: '1.25 rem'
+    },
+    graphHead:{
+        marginTop: '0.5 rem',
+        alignSelf: "flex-start",
+        marginLeft: '1 rem',
     }
 })
