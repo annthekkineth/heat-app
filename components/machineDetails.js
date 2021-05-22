@@ -154,7 +154,7 @@ const styles = EStyleSheet.create({
         width: '5.125rem',
         marginLeft: '1.25rem',
         top: '1.25rem',
-        fontSize: 17,
+        fontSize: '1.0625rem',
         fontWeight: '500',
     },
     input: {
@@ -163,7 +163,7 @@ const styles = EStyleSheet.create({
         height: '2.75rem',
         top: '-2.25rem',
         backgroundColor: '#fff',
-        borderRadius: 10,
+        borderRadius: '0.625rem',
     },
     inputPeriod: {
         width: '9.125rem',
@@ -171,7 +171,7 @@ const styles = EStyleSheet.create({
         height: '2.75rem',
         top: '-3.25rem',
         backgroundColor: '#fff',
-        borderRadius: 10,
+        borderRadius: '0.625rem',
 
     },
     refreshImage: {
@@ -191,7 +191,7 @@ const styles = EStyleSheet.create({
     notificationHead: {
         marginLeft: '1.75 rem',
         marginTop: '0.75 rem',
-        fontSize: 16,
+        fontSize: '1rem',
     },
     box3: {
         flex: 1,
@@ -200,8 +200,8 @@ const styles = EStyleSheet.create({
         marginBottom: '1.25 rem'
     },
     setTemp: {
-        borderRadius: 20,
-        height: 70,
+        borderRadius: '1.25rem',
+        height: '4.375 rem',
         width: '40%',
         backgroundColor: "#FFF"
     },
@@ -216,18 +216,18 @@ const styles = EStyleSheet.create({
     },
     setHumidity: {
         left: '1.25rem',
-        borderRadius: 20,
-        height: 70,
+        borderRadius: '1.25rem',
+        height: '4.375 rem',
         width: '40%',
         backgroundColor: "#FFF"
     },
     graph1: {
         justifyContent: 'center', alignItems: 'center',
         backgroundColor: "#fff",
-        borderRadius: 20,
+        borderRadius: '1.25rem',
         width: '90%',
         left: '1.25rem',
-        height: 270,
+        height: '15.75rem',
         marginBottom: '1.25 rem'
     },
     graphHead:{

@@ -1,12 +1,13 @@
 import React from 'react';
 import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
+import EStyleSheet from 'react-native-extended-stylesheet';
 
 export default function signIn(props) {
 
     const { navigation } = props;
 
     return (
-        <View>
+        <View style={styles.container}>
             <Image style={styles.controlImage} source={require('../icons/control.png')}/>
             <Text style={styles.homeHead}> RD150 Smart Controller </Text>
 
@@ -15,7 +16,7 @@ export default function signIn(props) {
                 <TouchableOpacity style={styles.homeBox} onPress={() => navigation.navigate('machineDetails')}>
                     <Text style={styles.macTitle}> Machine 1</Text>
                     <Image style={styles.macImage} source={require('../icons/machine.png')}/>
-                    <Image style={styles.rectImage} source={require('../icons/Rectangle.png')}/>
+                    <Image style={styles.macImage} source={require('../icons/Rectangle.png')}/>
                     <Image style={styles.thermoImage} source={require('../icons/thermometer.png')}/>
                     <Text style={styles.thermoData}>37.4</Text>
                     <Image style={styles.waterdropImage} source={require('../icons/water-drop.png')}/>
@@ -33,75 +34,74 @@ export default function signIn(props) {
     )
 }
 
-const styles = StyleSheet.create({
+const styles = EStyleSheet.create({
+    container: {
+        justifyContent: 'center', alignItems: 'center',
+      },
     homeHead: {
-        height: 30,
-        width: 225,
-        left: 120,
-        top: 75,
-        position: "absolute",
-        fontSize: 19,
-        fontWeight: '700',
+        height: '1.875rem',
+        width: '100%',
+        marginLeft: '12 rem',
+        marginTop: '1 rem',
+        fontSize: '1.1875rem',
+        fontWeight: 'bold',
 
     },
     controlImage:{
-        top: 50,
-        left: 60,
+        top: '3.125rem',
+        alignSelf: "flex-start",
+        marginLeft: '3 rem'
     },
     macImage:{
-        left:70,
-        top: 40,
-    },
-    rectImage:{
-        top: 50,
-        left: 70,
+        marginLeft: '4 rem',
+        marginTop: '1 rem'
     },
     thermoImage:{
-        top: 80,
-        left: 10,
-        width: 20.02,
-        height: 20,
+        width: '1.25rem',
+        height: '1.25rem',
+        marginTop: '2 rem',
+        marginLeft:'.5 rem'
     },
     thermoData:{
-        top: 60,
-        left: 35,
-        
+        marginTop: '-1 rem',
+        marginLeft:'1.75 rem'
     },
     waterdropImage:{
-        top: 40,
-        left: 95,
-        width: 20.02,
-        height: 20,
+        width: '1.25rem',
+        height: '1.25rem',
+        marginLeft:'5 rem',
+        marginTop: '-1.5 rem',
     },
     waterdropData:{
-        top: 20,
-        left: 120,
-        
+        marginTop: '-1 rem',
+        marginLeft:'6.5 rem'        
     },
     addImage:{
-        left: 65,
-        top:40,
-        width: 48,
-        height: 50,
+        alignSelf: "center",
+        marginTop: '2 rem',
+        width: '3rem',
+        height: '3.125rem',
     },
     flexBox: {
-        //display: 'flex',
         flex: 1,
         flexDirection: 'row',
         flexWrap: 'wrap',
         alignItems: 'center',
-        top: 143,
+        marginTop: '3 rem',
         justifyContent: 'space-around',
     },
     homeBox: {
-        height: 170,
-        width: 170,
-        borderRadius: 20,
+        height: '11 rem',
+        width: '10 rem',
+        marginLeft: '.5 rem',
+        borderRadius: '1.25rem',
         backgroundColor: '#FFFFFF',
+        alignSelf:'flex-start',
+        marginBottom: '1 rem',
     },
     macTitle: {
-        top: 20 ,
-        left: 53,
+        alignSelf: "center",
+        marginTop: '1 rem',
     },
 
 })
